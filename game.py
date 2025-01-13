@@ -1,5 +1,6 @@
 import pgzrun
 import random
+from random import randint
 
 WIDTH=800
 HEIGHT=450
@@ -16,7 +17,7 @@ enemies=[]
 
 enemies.append(Actor("bug"))
 enemies[-1].x=100
-enemies[-1].y=-10
+enemies[-1].y=-10 
 
 def draw():
     screen.blit("galaxy.jpg",(0,0))
@@ -37,6 +38,10 @@ def on_key_down(key):
         bullets[-1].y=ship.y-10
 
 def update():
+    for i in enemies:
+        enemies.append(Actor("bug"))
+        enemies[-1].x=randint(50, 750)
+        enemies[-1].y=-10 
     global score
     if keyboard.left:
         ship.x -=5
@@ -67,3 +72,5 @@ def update():
             score= score +100
 
 
+
+pgzrun.go()
